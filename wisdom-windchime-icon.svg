@@ -1,0 +1,57 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sunrise" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#FBF0CE"/>
+      <stop offset="55%" stop-color="#E8C567"/>
+      <stop offset="100%" stop-color="#C9A227"/>
+    </radialGradient>
+  </defs>
+  <!-- background: flat solid fill, easy to swap to any color -->
+  <rect width="400" height="400" fill="#F5F1E8"/>
+
+  <!-- shifted up 30px to keep the wordmark clear of a circular avatar crop -->
+  <g transform="translate(0,-30)">
+    <!-- breeze swirls -->
+    <path d="M60 150 C 85 140, 85 160, 110 150" fill="none" stroke="#445D48" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+    <path d="M50 180 C 78 168, 78 192, 106 180" fill="none" stroke="#445D48" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+    <path d="M300 150 C 315 140, 315 160, 330 150" fill="none" stroke="#445D48" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+
+    <!-- mount -->
+    <rect x="140" y="70" width="120" height="14" rx="7" fill="#445D48"/>
+    <circle cx="200" cy="77" r="4" fill="#F5F1E8"/>
+
+    <!-- strings -->
+    <line x1="140" y1="84" x2="140" y2="114" stroke="#8A8073" stroke-width="2"/>
+    <line x1="170" y1="84" x2="170" y2="99" stroke="#8A8073" stroke-width="2"/>
+    <line x1="200" y1="84" x2="200" y2="84" stroke="#8A8073" stroke-width="2"/>
+    <line x1="230" y1="84" x2="230" y2="99" stroke="#8A8073" stroke-width="2"/>
+    <line x1="260" y1="84" x2="260" y2="114" stroke="#8A8073" stroke-width="2"/>
+
+    <!-- tubes: center longest, tapering outward -->
+    <rect x="134" y="114" width="12" height="90" rx="6" fill="#C9A227"/>
+    <rect x="164" y="99" width="12" height="110" rx="6" fill="#C9A227"/>
+    <rect x="194" y="84" width="12" height="140" rx="6" fill="#C9A227"/>
+    <rect x="224" y="99" width="12" height="110" rx="6" fill="#C9A227"/>
+    <rect x="254" y="114" width="12" height="90" rx="6" fill="#C9A227"/>
+
+    <!-- clapper string -->
+    <line x1="200" y1="224" x2="200" y2="248" stroke="#8A8073" stroke-width="2"/>
+
+    <!-- sun/wisdom disc (early morning sunrise) -->
+    <g stroke="#B8901F" stroke-width="2.5" stroke-linecap="round">
+      <line x1="200" y1="248" x2="200" y2="240"/>
+      <line x1="200" y1="276" x2="200" y2="284"/>
+      <line x1="172" y1="262" x2="180" y2="262"/>
+      <line x1="220" y1="262" x2="228" y2="262"/>
+      <line x1="180" y1="242" x2="186" y2="248"/>
+      <line x1="214" y1="276" x2="220" y2="282"/>
+      <line x1="220" y1="248" x2="214" y2="254"/>
+      <line x1="186" y1="276" x2="180" y2="282"/>
+    </g>
+    <circle cx="200" cy="262" r="13" fill="url(#sunrise)"/>
+
+    <!-- wordmark ring -->
+    <text x="200" y="345" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="4" fill="#445D48" font-weight="600">WISDOM</text>
+    <text x="200" y="373" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="2" fill="#C9A227" font-weight="600">WINDCHIME</text>
+  </g>
+</svg>
