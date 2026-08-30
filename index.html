@@ -331,9 +331,47 @@
     font-size:12.5px;
     color:var(--gray-warm);
   }
+
+  /* ---------- FALLING LEAVES ---------- */
+  .leaves{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:40;
+  }
+  .leaf{
+    position:absolute;
+    top:-40px;
+    opacity:0;
+    animation-name:leaf-fall, leaf-fade;
+    animation-timing-function:linear, ease-in-out;
+    animation-iteration-count:infinite, infinite;
+  }
+  .leaf svg{display:block;}
+
+  @keyframes leaf-fall{
+    0%{ transform:translateY(-10vh) translateX(0) rotate(0deg); }
+    25%{ transform:translateY(25vh) translateX(40px) rotate(90deg); }
+    50%{ transform:translateY(50vh) translateX(-32px) rotate(180deg); }
+    75%{ transform:translateY(75vh) translateX(38px) rotate(270deg); }
+    100%{ transform:translateY(110vh) translateX(-16px) rotate(360deg); }
+  }
+  @keyframes leaf-fade{
+    0%{opacity:0;}
+    8%{opacity:0.4;}
+    92%{opacity:0.35;}
+    100%{opacity:0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .leaves{display:none;}
+  }
 </style>
 </head>
 <body>
+
+<div class="leaves" aria-hidden="true" id="leaves"></div>
 
 <header class="site-nav">
   <div class="nav-inner">
@@ -418,7 +456,7 @@
         <p>That strengthen your mind</p>
       </div>
       <div class="pillar">
-        <span class="mark">❤️</span>
+        <span class="mark">💚</span>
         <h3>Wisdom</h3>
         <p>For everyday life</p>
       </div>
@@ -482,6 +520,42 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Falling leaves ----------
+  (function(){
+    var container = document.getElementById('leaves');
+    if(!container) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var colors = ['#445D48', '#8FA98F', '#C9A227'];
+    var leafPath = 'M12 0 C 20 4, 24 14, 12 24 C 0 14, 4 4, 12 0 Z M12 6 L12 22';
+    var count = 8;
+    var segment = 100 / count;
+
+    for(var i = 0; i < count; i++){
+      var leaf = document.createElement('div');
+      leaf.className = 'leaf';
+
+      var size = 7 + Math.random() * 5;
+      var left = (i * segment) + (Math.random() * segment);
+      var duration = 16 + Math.random() * 12;
+      var delay = Math.random() * -duration;
+      var color = colors[Math.floor(Math.random() * colors.length)];
+
+      leaf.style.left = left + 'vw';
+      leaf.style.width = size + 'px';
+      leaf.style.height = size + 'px';
+      leaf.style.animationDuration = duration + 's, ' + duration + 's';
+      leaf.style.animationDelay = delay + 's, ' + delay + 's';
+
+      leaf.innerHTML =
+        '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '">' +
+        '<path d="' + leafPath + '" fill="' + color + '" fill-opacity="0.7" stroke="' + color + '" stroke-width="0.5"/>' +
+        '</svg>';
+
+      container.appendChild(leaf);
+    }
+  })();
 </script>
 
 </body>
